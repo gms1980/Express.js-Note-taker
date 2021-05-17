@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.get("/api/notes", function (err, res) {
   try {
     notesData = fs.readFileSync("./db/db.json", "utf8");
-    console.log("hello!");
+    console.log("hope_this_works!");
 
     notesData = JSON.parse(notesData);
   } catch (err) {
@@ -35,7 +35,7 @@ app.post("/api/notes", function (req, res) {
     notesData.push(req.body);
     notesData = JSON.stringify(notesData);
 
-    fs.writeFile("/db/db.json", notesData, "utf8", function (err) {
+    fs.writeFile("./db/db.json", notesData, "utf8", function (err) {
       if (err) throw err;
     });
     res.json(JSON.parse(notesData));
