@@ -49,9 +49,7 @@ app.post("/api/notes", function (req, res) {
 
 app.delete("/api/notes/:id", function (req, res) {
   try {
-    //  reads the json file
     notesData = fs.readFileSync("./db/db.json", "utf8");
-  
     notesData = JSON.parse(notesData);
     notesData = notesData.filter(function (note) {
       return note.id != req.params.id;
@@ -69,7 +67,6 @@ app.delete("/api/notes/:id", function (req, res) {
 
 // HTML GET Requests
 
-// Web page when the Get started button is clicked
 app.get("/notes", function (req, res) {
   res.sendFile(path.join(__dirname, "public/notes.html"));
 });
@@ -84,4 +81,3 @@ app.get("/api/notes", function (req, res) {
 app.listen(PORT, function () {
   console.log("SERVER IS LISTENING: " + PORT);
 });
-
